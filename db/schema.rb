@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_12_05_192847) do
 
   create_table "concert_bands", force: :cascade do |t|
     t.integer "band_id"
-    t.integer "concdrt_id"
+    t.integer "concert_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
