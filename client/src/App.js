@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ConcessionsList from "./ConcessionsList"
+import ConcertList from './ConcertList'
 
 const concessionUrl = "http://localhost:3000/concessions"
-
+const concertsUrl = "http://localhost:3000/concerts"
 
 
 
@@ -11,6 +12,7 @@ const concessionUrl = "http://localhost:3000/concessions"
 function App() {
   
   const [concessions, setConcessionList] = useState([])
+  const [concerts, setConcerts] = useState([])
 
 
   const getConcessions = () => {
@@ -18,18 +20,24 @@ function App() {
     .then(res => res.json())
     .then((setConcessionList))
   }
+
+  const getConcerts = () => {
+    fetch(concertsUrl)
+    .then(res => res.json())
+    .then(setConcerts)
+  }
   
   useEffect (() => {
     getConcessions()
+    getConcerts()
   }, [])
-
 
   return (
     <BrowserRouter>
       {/* <Header /> */}
       {/* <Login /> */}
       <Routes>
-        {/* <Route exact path="/" element={<ConcertList />} /> */}
+        <Route exact path="/" element={<ConcertList concerts={concerts} />} />
         <Route path="/concessions" element={<ConcessionsList concessions = {concessions} />} />
        {/* <Route path="/newconcert" element={<NewConcertForm />} /> */}
         {/* <Route path="/newconcession" element={<NewConcessionForm />} /> */}
