@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "seeding database"
 puts "creating bands..."
-Band.create(name: "Kendrick Lamar", description: "rapper", image: "")
-Band.create(name: "Childish Gambino", description: "funky soul", image: "")
-Band.create(name: "Little Simz", description: "soul", image: "")
-Band.create(name: "TOOL", description: "MATH METAL", image: "")
-Band.create(name: "PJ Harvey", description: "Grammy-nominated Punk Chanteuse", image: "")
-Band.create(name: "Death Grips", description: "loud homeless rants over synth and hard drums", image: "")
+Band.create(name: "Kendrick Lamar", description: "rapper", image: "https://static.hiphopdx.com/2015/12/Kendrick-Lamar_12-07-2015.jpg")
+Band.create(name: "Childish Gambino", description: "funky soul", image: "https://s3.amazonaws.com/media.thecrimson.com/photos/2014/09/23/141323_1298860.jpg")
+Band.create(name: "Little Simz", description: "soul", image: "https://media.timeout.com/images/105795896/image.jpg")
+Band.create(name: "TOOL", description: "MATH METAL", image: "https://toolshed.down.net/pix/bandblah.gif")
+Band.create(name: "PJ Harvey", description: "Grammy-nominated Punk Chanteuse", image: "https://img.cdandlp.com/2015/08/imgL/117637278.jpg")
+Band.create(name: "Death Grips", description: "loud homeless rants over synth and hard drums", image: "https://consequence.net/wp-content/uploads/2016/02/screen-shot-2016-02-02-at-5-09-08-pm.png")
 puts "creating concerts..."
 Concert.create(headline: "Grimefest", subtitle: "a bunch of loud music", image: "", date: "12/17/2022", doors: "7:00 PM", start_time: "9:00 PM", ticket_price: 45)
 Concert.create(headline: "Scuzzfest", subtitle: "loud music that would horrify your mom", image: "", date: "12/31/2022", doors: "7:00 PM", start_time: "9:00 PM", ticket_price: 75)

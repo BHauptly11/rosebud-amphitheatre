@@ -2,15 +2,17 @@
 // small mode with min info for appearing in the concerts list 
 // large mode with bands for displaying by itself
 
-// import Band from './Band'
+import {NavLink} from 'react-router-dom'
 
 function Concert({concert}) {
     return (
         <>
-        <img src="{concert.image}" />
+        <NavLink to={`/concert/${concert.id}`}>
+        <img src="{concert.image}" alt={concert.headline} />
         <h2>{concert.headline}</h2>
-        <h3>{concert.subtitle}</h3>
-        <p>{concert.date}</p>
+        </NavLink>
+        <h3>{concert.date}</h3>
+        <p>{concert.subtitle}</p>
         <p>Doors: {concert.doors} Showtime: {concert.start_time}</p>
         </>
     )
