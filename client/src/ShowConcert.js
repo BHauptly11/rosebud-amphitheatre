@@ -16,8 +16,10 @@ function ShowConcert() {
     return(
         concert ?
         <>
-        <p>{concert.headline}</p>
+        <h1>{concert.headline}</h1>
+        <h2>{concert.date}, Doors at {concert.doors}</h2>
         <p>{concert.bands.map(band => <Band key={band.id} band={band} />)}</p>
+
         </>
         :
         <p>Loading...</p>
