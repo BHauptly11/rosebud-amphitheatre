@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ConcessionsList from "./ConcessionsList"
 import ConcertList from './ConcertList'
+import ShowConcert from './ShowConcert';
 
 const concessionUrl = "http://localhost:3000/concessions"
 const concertsUrl = "http://localhost:3000/concerts"
@@ -39,6 +40,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<ConcertList concerts={concerts} />} />
         <Route path="/concessions" element={<ConcessionsList concessions = {concessions} />} />
+        <Route path="/concert/:id" element={<ShowConcert />} />
        {/* <Route path="/newconcert" element={<NewConcertForm />} /> */}
         {/* <Route path="/newconcession" element={<NewConcessionForm />} /> */}
         {/* <Route path="signup" element={<NewUserSignup />} /> */}
