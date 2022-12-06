@@ -10,7 +10,8 @@ function Concession(props) {
         <img src={props.concession.image} alt={props.concession.name}/>
         <div>Name: {props.concession.name}</div>
         <div>Price: {props.concession.price}</div>
-        <button></button>
+        <button onClick={() => props.deleteConcession(props.concession) }>Delete Concession</button>
+        <button>Edit Concession</button>
     </div>
     )
 }

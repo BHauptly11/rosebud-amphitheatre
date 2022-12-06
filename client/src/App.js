@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import ConcessionsList from "./ConcessionsList"
 import ConcertList from './ConcertList'
 import ShowConcert from './ShowConcert';
+import NewConcessionForm from './NewConcessionForm';
+
 
 const concessionUrl = "http://localhost:3000/concessions"
 const concertsUrl = "http://localhost:3000/concerts"
@@ -14,7 +16,39 @@ function App() {
   
   const [concessions, setConcessionList] = useState([])
   const [concerts, setConcerts] = useState([])
+  
+  // const navigate = useNavigate()
 
+  const onConcessionFormSubmit = (newConcession) => {
+    fetch(concessionUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(newConcession)
+    })
+    .then(res => res.json())
+    .then((updatedConcessionList) => {
+      updateConcessions(updatedConcessionList)
+    })
+  }
+
+  const updateConcessions = (newConcession) => {
+    setConcessionList((concessions) => ([...concessions, newConcession]))
+  }
+
+  const deleteConcession = (deletedConcession) => {
+    fetch(concessionUrl + `/${deletedConcession.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+    })
+    .then(res => res.json())
+    .then( getConcessions )
+  }
 
   const getConcessions = () => {
     fetch(concessionUrl)
@@ -39,10 +73,10 @@ function App() {
       {/* <Login /> */}
       <Routes>
         <Route exact path="/" element={<ConcertList concerts={concerts} />} />
-        <Route path="/concessions" element={<ConcessionsList concessions = {concessions} />} />
+        <Route path="/concessions" element={<ConcessionsList concessions = {concessions} deleteConcession = {deleteConcession} />} />
         <Route path="/concert/:id" element={<ShowConcert />} />
        {/* <Route path="/newconcert" element={<NewConcertForm />} /> */}
-        {/* <Route path="/newconcession" element={<NewConcessionForm />} /> */}
+        <Route path="/newconcession" element={<NewConcessionForm onConcessionFormSubmit={onConcessionFormSubmit}/>} />
         {/* <Route path="signup" element={<NewUserSignup />} /> */}
       </Routes>
     </BrowserRouter>
