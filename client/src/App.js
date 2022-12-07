@@ -8,6 +8,8 @@ import NewConcessionForm from './NewConcessionForm';
 import Header from './Header'
 import Login from './Login'
 import NewConcertForm from './NewConcertForm';
+import EditConcessionForm from './EditConcessionForm';
+
 
 const concessionUrl = "http://localhost:3000/concessions"
 const concertsUrl = "http://localhost:3000/concerts"
@@ -65,6 +67,25 @@ function App() {
     .then(setConcerts)
   }
   
+  const onEditConcession = (editedConcession) => {
+    fetch(concessionUrl + `/${editedConcession.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: editedConcession.name,
+        image: editedConcession.image,
+        price: editedConcession.price
+      })
+    })
+    .then(res => res.json())
+    .then((updatedConcession) => {console.log(updatedConcession)
+    updateConcessions()})
+  }
+
+
   useEffect (() => {
     getConcessions()
     getConcerts()
@@ -81,6 +102,7 @@ function App() {
        <Route path="/newconcert" element={<NewConcertForm />} />
         <Route path="/newconcession" element={<NewConcessionForm onConcessionFormSubmit={onConcessionFormSubmit}/>} />
         {/* <Route path="signup" element={<NewUserSignup />} /> */}
+        <Route path='/concession/:id/EditForm' element={<EditConcessionForm onEditConcession={onEditConcession}/>}/>
       </Routes>
     </BrowserRouter>
   );
