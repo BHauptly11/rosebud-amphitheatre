@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 function NewConcertForm() {
-    const [formData, setFormData] = useState({headline: "", subtitle: "", image: "", date: "", doors: "", start_time: "", ticket_price: 0})
+    const [formData, setFormData] = useState({headline: "", subtitle: "", image: "", date: "", doors: "", start_time: "", ticket_price: 0, band1: 0, band2: 0})
 
     function saveConcert() {
         const newConcert = {
@@ -17,6 +17,40 @@ function NewConcertForm() {
         // fetch to post the data, get ID back, then assign bands to that ID in concert_bands
         // OR have the return pop up an "assign bands to concert" page...
         console.log(newConcert)
+        onNewConcertSubmit(newConcert)
+
+    }
+
+    const onNewConcertSubmit = (newConcert) => {
+        fetch('http://localhost:3000/concerts', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(newConcert)
+        })
+        .then(res => res.json())
+        .then(r => newConcertBands(r))
+    }
+
+    const newConcertBands = (newConcert) => {
+        fetch('http://localhost:3000/concert_bands', {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": 'application/json'
+            },
+            body: JSON.stringify({concert_id: newConcert.id, band_id: formData.band1})
+        })
+        .then(fetch('http://localhost:3000/concert_bands', {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": 'application/json'
+            },
+            body: JSON.stringify({concert_id: newConcert.id, band_id: formData.band2})
+        }))
     }
 
     return (

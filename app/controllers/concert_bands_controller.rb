@@ -7,4 +7,10 @@ class ConcertBandsController < ApplicationController
         concert_band = ConcertBand.find(params[:id]).destroy
         render json: {}, status: :ok
     end
+
+    private
+
+    def concert_band_params
+        params.permit(:concert_id, :band_id)
+    end
 end
