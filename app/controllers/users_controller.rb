@@ -19,7 +19,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
 
     private
     def user_params
-        params.permit(:first_name, :last_name, :email)
+        params.permit(:first_name, :last_name, :email, :password)
     end
     def not_found_response
         render json: {error: "User not found"}, status: :not_found
