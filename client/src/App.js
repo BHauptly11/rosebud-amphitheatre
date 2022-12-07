@@ -5,7 +5,9 @@ import ConcessionsList from "./ConcessionsList"
 import ConcertList from './ConcertList'
 import ShowConcert from './ShowConcert';
 import NewConcessionForm from './NewConcessionForm';
-
+import Header from './Header'
+import Login from './Login'
+import NewConcertForm from './NewConcertForm';
 
 const concessionUrl = "http://localhost:3000/concessions"
 const concertsUrl = "http://localhost:3000/concerts"
@@ -70,13 +72,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
-      {/* <Login /> */}
+      <Header />
+      <Login />
       <Routes>
         <Route exact path="/" element={<ConcertList concerts={concerts} />} />
         <Route path="/concessions" element={<ConcessionsList concessions = {concessions} deleteConcession = {deleteConcession} />} />
         <Route path="/concert/:id" element={<ShowConcert />} />
-       {/* <Route path="/newconcert" element={<NewConcertForm />} /> */}
+       <Route path="/newconcert" element={<NewConcertForm />} />
         <Route path="/newconcession" element={<NewConcessionForm onConcessionFormSubmit={onConcessionFormSubmit}/>} />
         {/* <Route path="signup" element={<NewUserSignup />} /> */}
       </Routes>
