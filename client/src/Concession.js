@@ -1,5 +1,5 @@
 import React from "react";
-
+import {NavLink} from "react-router-dom"
 
 function Concession(props) {
 
@@ -11,7 +11,7 @@ function Concession(props) {
         <div>Name: {props.concession.name}</div>
         <div>Price: {props.concession.price}</div>
         <button onClick={() => props.deleteConcession(props.concession) }>Delete Concession</button>
-        <button>Edit Concession</button>
+        <NavLink to={`/concession/${props.concession.id}/EditForm`} name="Edit Concession">Edit Concession</NavLink>
     </div>
     )
 }
