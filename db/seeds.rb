@@ -18,7 +18,7 @@ Concert.create(headline: "Grimefest", subtitle: "a bunch of loud music", image: 
 Concert.create(headline: "Scuzzfest", subtitle: "loud music that would horrify your mom", image: "", date: "12/31/2022", doors: "7:00 PM", start_time: "9:00 PM", ticket_price: 75)
 Concert.create(headline: "Heatfest", subtitle: "it's warm in here, plus there's music", image: "", date: "01/06/2023", doors: "5:00 PM", start_time: "7:00 PM", ticket_price: 25)
 puts "creating users..."
-User.create(first_name: "David", last_name: "Pumpkins", email: "david@pumpkins.com")
+User.create(first_name: "David", last_name: "Pumpkins", email: "david@pumpkins.com", password: "anyquestions")
 puts "creating tickets..."
 Ticket.create(user_id: 1, concert_id: 1)
 Ticket.create(user_id: 1, concert_id: 2)
