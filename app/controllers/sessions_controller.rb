@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     def create
-        byebug
+        
         params.permit[:email, :password]
         user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
