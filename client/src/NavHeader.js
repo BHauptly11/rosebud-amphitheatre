@@ -1,4 +1,6 @@
 import {NavLink} from 'react-router-dom'
+import { Header, Icon } from 'semantic-ui-react'
+
 
 function NavHeader () {
     return (
