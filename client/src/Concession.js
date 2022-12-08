@@ -10,8 +10,8 @@ function Concession(props) {
         <img src={props.concession.image} alt={props.concession.name}/>
         <div>Name: {props.concession.name}</div>
         <div>Price: {props.concession.price}</div>
-        <button onClick={() => props.deleteConcession(props.concession) }>Delete Concession</button>
-        <NavLink to={`/concession/${props.concession.id}/EditForm`} name="Edit Concession">Edit Concession</NavLink>
+        {localStorage.email ? <button onClick={() => props.deleteConcession(props.concession) }>Delete Concession</button> : null }
+        {localStorage.email? <NavLink to={`/concession/${props.concession.id}/EditForm`} name="Edit Concession">Edit Concession</NavLink> : null}
     </div>
     )
 }

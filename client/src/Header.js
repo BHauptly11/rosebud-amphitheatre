@@ -6,8 +6,13 @@ function Header () {
         <h1>Rosebud Amphitheater</h1>
         <NavLink to={`/`}>Concerts</NavLink>
         <NavLink to={`/concessions`}>Concessions</NavLink>
+        {localStorage.email ? 
+        <>
         <NavLink to={`/newband`}>Add Band</NavLink>
         <NavLink to={`/newconcert`}>Add Concert</NavLink>
+        <NavLink to={`/newconcession`}>Add Concession</NavLink> 
+        </>
+        : null}
     </div>
     )
 }
