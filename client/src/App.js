@@ -9,7 +9,7 @@ import Header from './Header'
 import Login from './Login'
 import NewConcertForm from './NewConcertForm';
 import EditConcessionForm from './EditConcessionForm';
-
+import NewBandForm from './NewBandForm';
 
 const concessionUrl = "http://localhost:3000/concessions"
 const concertsUrl = "http://localhost:3000/concerts"
@@ -85,6 +85,18 @@ function App() {
     updateConcessions()})
   }
 
+  const onBandFormSubmit = (newBand) => {
+    fetch('http://localhost:3000/bands', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(newBand)
+      })
+      .then(res => res.json())
+  }
+
 
   useEffect (() => {
     getConcessions()
@@ -103,6 +115,7 @@ function App() {
         <Route path="/newconcession" element={<NewConcessionForm onConcessionFormSubmit={onConcessionFormSubmit}/>} />
         {/* <Route path="signup" element={<NewUserSignup />} /> */}
         <Route path='/concession/:id/EditForm' element={<EditConcessionForm onEditConcession={onEditConcession}/>}/>
+        <Route path='/newband' element={<NewBandForm onBandFormSubmit={onBandFormSubmit} />}/>
       </Routes>
     </BrowserRouter>
   );
