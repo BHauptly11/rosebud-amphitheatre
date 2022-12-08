@@ -2,7 +2,11 @@ class ConcessionsController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
 
     def create
-        render json: Concession.create(concession_params), status: :ok
+        # if session[:user_id]
+            render json: Concession.create(concession_params), status: :ok
+        # else
+        #     render json: {error: "Not authorized"}, status: :unauthorized
+        # end
     end
     def index
         render json: Concession.all, status: :ok
