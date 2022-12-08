@@ -4,7 +4,6 @@ function Login() {
     const [formData, setFormData] = useState({email: "", password: ""})
 
     function onLogin() {
-        console.log(JSON.stringify(formData))
         fetch("http://localhost:3000/login", {
             method: "POST",
             headers: {
@@ -13,11 +12,20 @@ function Login() {
             },
             body: JSON.stringify(formData)
         })
+        .then(res => res.json())
+        .then(r => localStorage.email = r.email)
+        .then(setFormData({email: "", password: ""}))
+    }
+
+    function logout() {
+        fetch("http://localhost:3000/logout")
+        .then(setFormData({email: "", password: ""}))
+        localStorage.removeItem("email")
     }
 
     return(
-        false ?
-        <p>logged in</p>
+        localStorage.email ?
+        <p>logged in as {localStorage.email} <button onClick={() => logout()}>logout</button></p>
         :
         <div>
             <p>
