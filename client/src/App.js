@@ -21,8 +21,14 @@ function App() {
   
   const [concessions, setConcessionList] = useState([])
   const [concerts, setConcerts] = useState([])
+  const [loggedIn, setLoggedIn] = useState(localStorage.email ? true : false)
+  
   
   // const navigate = useNavigate()
+    
+    function toggleLoggedIn() {
+        loggedIn ? setLoggedIn(false) : setLoggedIn(true)
+    }
 
   const onConcessionFormSubmit = (newConcession) => {
     fetch(concessionUrl, {
@@ -80,9 +86,7 @@ function App() {
         price: editedConcession.price
       })
     })
-    .then(res => res.json())
-    .then((updatedConcession) => {console.log(updatedConcession)
-    updateConcessions()})
+    .then(getConcessions())
   }
 
   const onBandFormSubmit = (newBand) => {
@@ -106,12 +110,12 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Login />
+      <Login toggleLoggedIn={toggleLoggedIn} />
       <Routes>
         <Route exact path="/" element={<ConcertList concerts={concerts} />} />
         <Route path="/concessions" element={<ConcessionsList concessions = {concessions} deleteConcession = {deleteConcession} />} />
         <Route path="/concert/:id" element={<ShowConcert />} />
-       <Route path="/newconcert" element={<NewConcertForm />} />
+       <Route path="/newconcert" element={<NewConcertForm getConcerts={getConcerts} />} />
         <Route path="/newconcession" element={<NewConcessionForm onConcessionFormSubmit={onConcessionFormSubmit}/>} />
         {/* <Route path="signup" element={<NewUserSignup />} /> */}
         <Route path='/concession/:id/EditForm' element={<EditConcessionForm onEditConcession={onEditConcession}/>}/>

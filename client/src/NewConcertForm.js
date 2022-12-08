@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function NewConcertForm() {
+function NewConcertForm({getConcerts}) {
     const [formData, setFormData] = useState({headline: "", subtitle: "", image: "", date: "", doors: "", start_time: "", ticket_price: 0, band1: 0, band2: 0})
 
     function saveConcert() {
@@ -43,14 +43,8 @@ function NewConcertForm() {
             },
             body: JSON.stringify({concert_id: newConcert.id, band_id: [formData.band1, formData.band2]})
         })
-        // .then(fetch('http://localhost:3000/concert_bands', {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": 'application/json',
-        //         "Accept": 'application/json'
-        //     },
-        //     body: JSON.stringify({concert_id: newConcert.id, band_id: formData.band2})
-        // }))
+        .then(getConcerts())
+// we need to call state so ConcertList rerenders.
     }
 
     return (
