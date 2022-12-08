@@ -13,8 +13,15 @@ function Login() {
             body: JSON.stringify(formData)
         })
         .then(res => res.json())
-        .then(r => localStorage.email = r.email)
-        .then(setFormData({email: "", password: ""}))
+        .then(r => {
+            if (r.email) {
+                localStorage.removeItem("error")
+                localStorage.email = r.email
+            } else {
+                localStorage.error = "invalid email/password combination"
+            }
+            setFormData({email: "", password: ""})
+        })
     }
 
     function logout() {
@@ -29,6 +36,7 @@ function Login() {
         :
         <div>
             <p>
+                <b><small>{localStorage.error ? localStorage.error : null}</small></b><br />
                 <small>username:</small><input type="text" name="email" id="email" value={formData["email"]} onChange={(e) => setFormData({...formData, email: e.target.value})}></input><br />
                 <small>password:</small><input type="password" name="password" id="password" value={formData["password"]} onChange={(e) => setFormData({...formData, password: e.target.value})}></input><br />
                 <button onClick={() => onLogin()}>login</button>
