@@ -1,6 +1,6 @@
 import {NavLink} from 'react-router-dom'
 
-function Header () {
+function NavHeader () {
     return (
     <div>
         <h1>Rosebud Amphitheater</h1>
@@ -17,4 +17,4 @@ function Header () {
     )
 }
 
-export default Header
+export default NavHeader
