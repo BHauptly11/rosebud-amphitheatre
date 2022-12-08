@@ -5,7 +5,7 @@ import ConcessionsList from "./ConcessionsList"
 import ConcertList from './ConcertList'
 import ShowConcert from './ShowConcert';
 import NewConcessionForm from './NewConcessionForm';
-import Header from './Header'
+import SiteHeader from './Header'
 import Login from './Login'
 import NewConcertForm from './NewConcertForm';
 import EditConcessionForm from './EditConcessionForm';
@@ -93,7 +93,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
+      <SiteHeader />
       <Login />
       <Routes>
         <Route exact path="/" element={<ConcertList concerts={concerts} />} />
