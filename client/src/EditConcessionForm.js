@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 const EditConcessionForm = ({onEditConcession}) => {
     const {id} = useParams()
     const [formData, setFormData] = useState({
-        id: id,
         name: "",
         image:"",
         price: 0

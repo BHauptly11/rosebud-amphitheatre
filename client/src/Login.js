@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function Login() {
+function Login({toggleLoggedIn}) {
     const [formData, setFormData] = useState({email: "", password: ""})
 
     function onLogin() {
@@ -21,6 +21,7 @@ function Login() {
                 localStorage.error = "invalid email/password combination"
             }
             setFormData({email: "", password: ""})
+            toggleLoggedIn()
         })
     }
 
@@ -28,6 +29,7 @@ function Login() {
         fetch("http://localhost:3000/logout")
         .then(setFormData({email: "", password: ""}))
         localStorage.removeItem("email")
+        toggleLoggedIn()
     }
 
     return(
