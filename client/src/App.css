@@ -1,4 +1,10 @@
 
+img {
+  max-width: 400px;
+  max-height: 200px;
+  border-radius: 20px;
+}
+
 .App {
   text-align: center;
 }
