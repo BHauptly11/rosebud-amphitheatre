@@ -8,7 +8,7 @@ function Concert({concert}) {
     return (
         <>
         <NavLink to={`/concert/${concert.id}`}>
-        <img src="{concert.image}" alt={concert.headline} />
+        <img src={concert.image} alt={concert.headline} />
         <h2>{concert.headline}</h2>
         </NavLink>
         <h3>{concert.date}</h3>
