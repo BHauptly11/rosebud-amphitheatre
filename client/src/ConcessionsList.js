@@ -1,5 +1,7 @@
 import React from "react";
 import Concession from "./Concession";
+import { Header } from 'semantic-ui-react'
+
 
 
 function ConcessionsList(props) {
@@ -12,6 +14,12 @@ function ConcessionsList(props) {
     
     return (
         <div>
+                <div className="concession-header-align">
+                <Header textAlign='center' dividing
+                    as='h2'
+                    content='Check out our Menu!'
+                />
+                </div>
             {displayConcessions}
         </div>
     )

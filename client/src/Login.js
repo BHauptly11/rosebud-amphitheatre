@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import { Input, Button, Icon, Message } from 'semantic-ui-react'
+
 
 function Login({toggleLoggedIn}) {
     const [formData, setFormData] = useState({email: "", password: ""})
@@ -34,17 +36,39 @@ function Login({toggleLoggedIn}) {
 
     return(
         localStorage.email ?
-        <p>logged in as {localStorage.email} <button onClick={() => logout()}>logout</button></p>
+        
+        <div className='logout-align'>
+        <p>
+            <Message  compact>
+                logged in as {localStorage.email}!
+            </Message>
+        <p>
+            <Button icon labelPosition='right' onClick={() => logout()}>
+                Logout
+                <Icon name='right arrow' />
+            </Button>
+        </p>
+        </p>
+        </div>
         :
-        <div>
+        <div className='login-align'>
             <p>
                 <b><small>{localStorage.error ? localStorage.error : null}</small></b><br />
-                <small>username:</small><input type="text" name="email" id="email" value={formData["email"]} onChange={(e) => setFormData({...formData, email: e.target.value})}></input><br />
-                <small>password:</small><input type="password" name="password" id="password" value={formData["password"]} onChange={(e) => setFormData({...formData, password: e.target.value})}></input><br />
-                <button onClick={() => onLogin()}>login</button>
+                <Input icon='users' iconPosition='left' placeholder='Input Username...' type='text' name='email' id='email' value={formData["email"]} onChange={(e) => setFormData({...formData, email: e.target.value})} />
             </p>
+            <p>
+                <Input icon='lock' iconPosition='left' placeholder='Input Password...' type="password" name="password" id="password" value={formData["password"]} onChange={(e) => setFormData({...formData, password: e.target.value})} />
+
+            </p>
+            <Button icon labelPosition='right' onClick={() => onLogin()}>
+                Login
+                <Icon name='right arrow' />
+            </Button>
         </div>
     )
 }
 
 export default Login
+{/* <small>username:</small><input type="text" name="email" id="email" value={formData["email"]} onChange={(e) => setFormData({...formData, email: e.target.value})}></input><br />
+<small>password:</small><input type="password" name="password" id="password" value={formData["password"]} onChange={(e) => setFormData({...formData, password: e.target.value})}></input><br />
+<button onClick={() => onLogin()}>login</button> */}

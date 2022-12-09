@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom"
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Card, Header } from 'semantic-ui-react'
 
 
 function Concession(props) {
@@ -8,11 +8,22 @@ function Concession(props) {
 
 
     return (
-      
+      <>
       <div>
-      <img src={props.concession.image} alt={props.concession.name}/>
+<div className="card-align">
+<Card centered
+    image = {props.concession.image} alt={props.concession.name}
+    header = {props.concession.name}
+    meta ='In stock'
+    extra = {props.concession.price}  
+    />
+    </div>
+
+      {/* <img src={props.concession.image} alt={props.concession.name}/>
       <div>Name: {props.concession.name}</div>
-      <div>Price: {props.concession.price}</div>
+      <div>Price: {props.concession.price}</div> */}
+
+<div className="c-buttons">
       {localStorage.email ?<Button animated='vertical' onClick={() => props.deleteConcession(props.concession) }>
     <Button.Content hidden>Delete</Button.Content>
     <Button.Content visible>
@@ -27,8 +38,9 @@ function Concession(props) {
     </Button.Content>
   </Button>
       </NavLink> : null}
+      </div>
   </div>
-      
+  </>
       )
     }
     
