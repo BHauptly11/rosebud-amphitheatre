@@ -10,7 +10,7 @@ function Concert({concert}) {
     return (
         <>
                   <Card color='purple'>
-        <Image src='{concert.image}' wrapped ui={false} />
+        <Image src={concert.image} wrapped ui={false} />
         <Card.Content>
         <NavLink to={`/concert/${concert.id}`}>
           <Card.Header>{concert.headline}</Card.Header>
