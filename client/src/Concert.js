@@ -9,6 +9,7 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 function Concert({concert}) {
     return (
         <>
+
                   <Card centered color='purple'>
         <Image src={concert.image} wrapped ui={false} />
         <Card.Content>
