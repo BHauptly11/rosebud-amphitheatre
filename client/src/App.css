@@ -34,3 +34,56 @@ img {
   max-height: 200px;
   border-radius: 20px;
 }
+
+.band-items {
+  margin-bottom: 0px;
+}
+
+.band-image {
+  margin-top: 100px;
+  width: 100px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.headline-div {
+  height: 1200px;
+}
+
+.c-buttons {
+  margin-right: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-align {
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.header-align {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-align {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.login-align {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logout-align {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.concession-header-align {
+  margin-top: 20px;
+}

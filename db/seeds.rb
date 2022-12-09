@@ -5,6 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Band.destroy_all
+Concert.destroy_all
+User.destroy_all
+Concession.destroy_all
+Ticket.destroy_all
+ConcertBand.destroy_all
+
+puts "Clearing the database..."
+
 puts "seeding database"
 puts "creating bands..."
 Band.create(name: "Kendrick Lamar", description: "rapper", image: "https://static.hiphopdx.com/2015/12/Kendrick-Lamar_12-07-2015.jpg")

@@ -9,8 +9,8 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 function Concert({concert}) {
     return (
         <>
-                  <Card color='purple'>
-        <Image src='{concert.image}' wrapped ui={false} />
+                  <Card centered color='purple'>
+        <Image src={concert.image} wrapped ui={false} />
         <Card.Content>
         <NavLink to={`/concert/${concert.id}`}>
           <Card.Header>{concert.headline}</Card.Header>
